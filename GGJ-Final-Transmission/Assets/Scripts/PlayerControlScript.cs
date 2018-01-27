@@ -16,6 +16,8 @@ public class PlayerControlScript : MonoBehaviour
     public int health = 6;
     public bool dead = false;
     public Slider healthSlider = null;
+    public GameObject playerExplosionPrefab = null;
+    public GameObject playerSprite = null;
 
     // Use this for initialization
     void Start()
@@ -34,20 +36,20 @@ public class PlayerControlScript : MonoBehaviour
     void Update()
     {
         inputVelocity = Vector3.zero;
-        inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
-        inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
+        if (!dead)
+        {
+            inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
+            inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!dead)
-        {
-            Vector3 velocity = rb.velocity;
-            velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.1f);
-            rb.velocity = velocity;
+        Vector3 velocity = rb.velocity;
+        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.1f);
+        rb.velocity = velocity;
 
-            //rb.velocity = inputVelocity;
-        }
+        //rb.velocity = inputVelocity;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -79,11 +81,32 @@ public class PlayerControlScript : MonoBehaviour
         {
             health = 0;
             dead = true;
+
+            StartCoroutine(AnimateDeath());
         }
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = health;
         }
+    }
+
+    private IEnumerator AnimateDeath()
+    {
+        // Spawn an explosion
+        var explosion = GameObject.Instantiate(
+            playerExplosionPrefab, transform.position, Quaternion.identity
+        );
+        GameObject.Destroy(explosion, 2.5f);
+
+        // Slow time and wait for a few seconds
+        Time.timeScale = 0.25f;
+        yield return new WaitForSeconds(0.25f);
+        playerSprite.SetActive(false);
+        yield return new WaitForSeconds(0.75f);
+        Time.timeScale = 1.0f;
+
+        // Destroy the player's ship
+        GameObject.Destroy(this.gameObject);
     }
 }
