@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 61599525649280240}
   - component: {fileID: 50107024416088386}
   - component: {fileID: 114476047202007406}
+  - component: {fileID: 60249583852522868}
   m_Layer: 0
   m_Name: PlayerShipPrefab
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654256243378324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -2.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4752761691531954}
@@ -88,17 +89,52 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!60 &60249583852522868
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654256243378324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.010731212, y: 0.37222213}
+      - {x: -0.14599961, y: -0.16281128}
+      - {x: -0.354213, y: -0.28751418}
+      - {x: -0.47922826, y: -0.024211735}
+      - {x: -0.41392982, y: -0.30620933}
+      - {x: -0.2281059, y: -0.40023986}
+      - {x: 0.23713921, y: -0.3997434}
+      - {x: 0.41906732, y: -0.3105463}
+      - {x: 0.4697082, y: -0.048293233}
+      - {x: 0.34846118, y: -0.27351913}
+      - {x: 0.1301164, y: -0.1416952}
 --- !u!61 &61599525649280240
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654256243378324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -162,7 +198,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e9cf287ce0f548c44a9518cb03ec62bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd2fcb5dd8c06ff498a65cc348afcd13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

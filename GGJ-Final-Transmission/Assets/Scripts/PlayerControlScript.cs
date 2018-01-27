@@ -4,38 +4,31 @@ using UnityEngine;
 
 public class PlayerControlScript : MonoBehaviour {
 
-    public Vector3 inputVec;
     private float moveSpeed = 5f;
+    private Vector3 inputVelocity = Vector3.zero;
+    private Vector3 accel = Vector3.zero;
+    private Rigidbody2D rb = null;
 
-
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        inputVec = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            inputVec += new Vector3(0f, 1f, 0f);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            inputVec += new Vector3(0f, -1f, 0f);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            inputVec += new Vector3(-1f, 0f, 0f);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            inputVec += new Vector3(1f, 0f, 0f);
-        }
-
-        this.transform.position += (inputVec * Time.deltaTime * moveSpeed);
-
-
+	void Update()
+    {
+        inputVelocity = Vector3.zero;
+        inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
+        inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
 	}
+
+    private void FixedUpdate()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.1f);
+        rb.velocity = velocity;
+
+        //rb.velocity = inputVelocity;
+    }
 }
