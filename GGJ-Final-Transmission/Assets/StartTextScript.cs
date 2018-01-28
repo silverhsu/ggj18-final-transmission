@@ -8,7 +8,7 @@ public class StartTextScript : MonoBehaviour {
     public string contentString;
 
     public float textKeyTimer = 0f;
-    private float textKeyThreshold = 0.05f;
+    private float textKeyThreshold = 0.04f;
 
     private bool isTriggered;
 
@@ -32,8 +32,12 @@ public class StartTextScript : MonoBehaviour {
 
     private Vector3 startScale;
 
+    private EffectTextBackScript textBack;
+
     // Use this for initialization
     void Start () {
+
+        textBack = GameObject.FindObjectOfType<EffectTextBackScript>();
 
         txtMesh = this.GetComponent<TextMesh>();
         txtMesh.text = "";
@@ -60,7 +64,6 @@ public class StartTextScript : MonoBehaviour {
                 }
                 else
                 {
-
                     displayString += contentString[charCount];
                 }
 
@@ -71,6 +74,12 @@ public class StartTextScript : MonoBehaviour {
                 fadeOutTimer += Time.unscaledDeltaTime;
 
                 this.transform.localScale = new Vector3(startScale.x * xScaleCurve.Evaluate(fadeOutTimer/ fadeOutThreshold), startScale.y * yScaleCurve.Evaluate(fadeOutTimer / fadeOutThreshold), startScale.z);
+                if(fadeOutTimer > fadeOutThreshold)
+                {
+                    isReachedEndOfMessage = false;
+                    isTriggered = false;
+                    textBack.fadeOutBlack();
+                }
             }
         }
 
@@ -83,11 +92,17 @@ public class StartTextScript : MonoBehaviour {
     public void showMessage(string bodyText)
     {
         Debug.Log("show start message with body: " + bodyText);
-
+        textBack.fadeInBack();
+        this.transform.localScale = startScale;
+        fadeOutTimer = 0f;
+        textKeyTimer = 0f;
+        charCount = -1;
         isTriggered = true;
+        displayString = "";
+        contentString = "";
         //displayString = bodyText;
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...\n";
-        contentString += beginningString + bodyText + "\n............";
+        contentString += beginningString + bodyText + "\n...............end";
         charThreshold = contentString.Length;
 
         Debug.Log("content length:" + contentString.Length);

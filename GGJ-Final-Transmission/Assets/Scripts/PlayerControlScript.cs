@@ -19,6 +19,7 @@ public class PlayerControlScript : MonoBehaviour
     public GameObject playerExplosionPrefab = null;
     public GameObject playerSprite = null;
 
+
     private TestTransmissionScript transmissionScript;
 
     // Use this for initialization
@@ -92,6 +93,7 @@ public class PlayerControlScript : MonoBehaviour
             dead = true;
 
             transmissionScript.triggerTransmission();
+            
 
             StartCoroutine(AnimateDeath());
         }

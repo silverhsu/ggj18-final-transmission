@@ -39,8 +39,11 @@ public class TestTransmissionScript : MonoBehaviour {
 
     private bool isTriggered = false;
 
+    private EffectTextBackScript textBackScript;
+
     // Use this for initialization
     void Start () {
+        textBackScript = GameObject.FindObjectOfType<EffectTextBackScript>();
         displayString = "";
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...";
         txtMesh.text = displayString;
@@ -133,7 +136,7 @@ public class TestTransmissionScript : MonoBehaviour {
                 isDoneTyping = true;
 
                 liesDB.InsertMessage(queryString);
-
+                textBackScript.fadeOutBlack();
                 //SUBMIT
                 Debug.Log(queryString);
             }
@@ -143,6 +146,7 @@ public class TestTransmissionScript : MonoBehaviour {
 
     public void triggerTransmission()
     {
+        textBackScript.fadeInBack();
         if (!glassLayer.gameObject.activeSelf)
         {
             glassLayer.gameObject.SetActive(true);
