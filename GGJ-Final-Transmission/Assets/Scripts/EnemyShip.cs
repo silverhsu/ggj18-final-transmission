@@ -131,7 +131,9 @@ public class EnemyShip : MonoBehaviour
     {
         // Spawn an explosion
         var explosion = GameObject.Instantiate(
-            explosionPrefab, transform.position, Quaternion.identity
+            explosionPrefab, 
+            transform.position + Vector3.back * 2.0f, 
+            Quaternion.identity
         );
         GameObject.Destroy(explosion, 2.5f);
 

@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
         var em = normalAsteroids.emission;
         em.rateOverTime = 0.0f;
 
-        yield return new WaitForSeconds(3.0f);
         database.GetRandomMessages(list => StartCoroutine(ShowMessages(list)));
 
         for (int j = 0; j < 3; ++j)
@@ -62,13 +61,15 @@ public class GameManager : MonoBehaviour
                 destroyedShip,
                 transform.position + 
                     Vector3.up * 10.0f + 
-                    Vector3.right * Random.Range(-6.0f, 6.0f),
+                    Vector3.right * Random.Range(-6.0f, 6.0f) +
+                    Vector3.forward * 5.0f,
                 Quaternion.identity
             );
             GameObject.Destroy(mine, 20.0f);
             yield return new WaitForSeconds(1.0f);
         }
 
+        yield return new WaitForSeconds(3.0f);
         Debug.LogFormat("Stage {0} started", value);
     }
 

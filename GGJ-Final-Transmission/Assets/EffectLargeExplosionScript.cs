@@ -19,7 +19,7 @@ public class EffectLargeExplosionScript : MonoBehaviour {
     private SpriteRenderer sprRend;
 
     private float frameTimer = 0f;
-    private float frameThreshold = 0.125f;
+    private float frameThreshold = 0.05f;
 
     // Use this for initialization
     void Start () {
