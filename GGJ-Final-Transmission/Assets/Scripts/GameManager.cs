@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         int time = Mathf.FloorToInt(Time.timeSinceLevelLoad);
         timeText.text = string.Format(
             "{0:00}:{1:00}",

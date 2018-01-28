@@ -22,6 +22,11 @@ public class UIMainMenuButtonScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         this.transform.localScale = Vector3.Lerp(this.transform.localScale, startScale, Time.deltaTime * 8f);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnMouseOver()
