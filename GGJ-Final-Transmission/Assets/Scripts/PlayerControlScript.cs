@@ -63,10 +63,6 @@ public class PlayerControlScript : MonoBehaviour
             {
                 FireWeapon();
             }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
 
             // Rotate ship as player moves left and right
             Vector3 curPos = this.transform.position;
