@@ -100,6 +100,7 @@ public class StartTextScript : MonoBehaviour {
         isTriggered = true;
         displayString = "";
         contentString = "";
+        txtMesh.text = "";
         //displayString = bodyText;
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...\n";
         contentString += beginningString + bodyText + "\n...............end";
