@@ -206,8 +206,20 @@ public static class NameGenerator
 
     public static string getNewName()
     {
-        string firstName = namesFirst[Random.Range(0, namesFirst.Length)];
-        string lastName = namesLast[Random.Range(0, namesLast.Length)];
+        int firstNameInd = Random.Range(0, namesFirst.Length);
+        int lastNameInd = Random.Range(0, namesLast.Length);
+
+        string firstName = namesFirst[firstNameInd];
+        string lastName = namesLast[lastNameInd];
+
+        char lastNameLastChar = lastName[lastName.Length - 1];
+
+        // Weird-ass Russian thing
+        if (lastNameLastChar.Equals('v') && lastNameIndex % 8 >= 4)
+        {
+            lastName += 'a';
+        }
+
         return (firstName + " " + lastName);
     }
 
