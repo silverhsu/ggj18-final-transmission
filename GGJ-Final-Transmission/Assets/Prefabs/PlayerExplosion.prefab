@@ -1145,7 +1145,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     tilesX: 1
-    tilesY: 8
+    tilesY: 6
     animationType: 1
     rowIndex: 0
     cycles: 1
