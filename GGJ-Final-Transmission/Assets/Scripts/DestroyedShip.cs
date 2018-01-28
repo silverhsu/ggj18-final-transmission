@@ -9,8 +9,8 @@ public class DestroyedShip : MonoBehaviour {
 	void Start ()
     {
         rb.rotation = Random.Range(0.0f, 360.0f);
-        rb.angularVelocity = Random.Range(1, 5) * 30.0f;
-        rb.velocity = new Vector2(0.0f, -1.0f);
+        //rb.angularVelocity = Random.Range(1, 5) * 30.0f;
+        rb.velocity = new Vector2(0.0f, -2.0f);
 
     }
 }
