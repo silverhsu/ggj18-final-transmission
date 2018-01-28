@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         //{
         //    Debug.Log(msg.Text);
         //}
-        if (list != null)
+        if (list.Length > 0)
         {
             startTextScript.showMessage(list[0].Text);
         }else
