@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 408290802}
   - component: {fileID: 408290801}
   - component: {fileID: 408290800}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BackgroundAsteroids2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2028497989
+  randomSeed: -2028810212
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4160,7 +4160,7 @@ GameObject:
   - component: {fileID: 686245936}
   - component: {fileID: 686245935}
   - component: {fileID: 686245934}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BackgroundAsteroids1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4281,7 +4281,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 67630689
+  randomSeed: -864439548
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7820,7 +7820,7 @@ GameObject:
   - component: {fileID: 1117250464}
   - component: {fileID: 1117250463}
   - component: {fileID: 1117250462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForegroundAsteroids1
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -7941,7 +7941,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 920043751
+  randomSeed: -251251727
   InitialModule:
     serializedVersion: 3
     enabled: 1

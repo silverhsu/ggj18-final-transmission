@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerControlScript : MonoBehaviour
+public class EnemyShip : MonoBehaviour
 {
-    public const int ASTEROID_DAMAGE = 2;
-
-    private float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     private Vector3 inputVelocity = Vector3.zero;
     private Vector3 accel = Vector3.zero;
     private Rigidbody2D rb = null;
 
-    public int maxHealth = 6;
-    public int health = 6;
+    public int maxHealth = 1;
+    public int health = 1;
     public bool dead = false;
     public Slider healthSlider = null;
-    public GameObject playerExplosionPrefab = null;
-    public GameObject playerSprite = null;
+    public GameObject explosionPrefab = null;
+    public GameObject sprite = null;
 
-    // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,37 +27,39 @@ public class PlayerControlScript : MonoBehaviour
             healthSlider.maxValue = maxHealth;
             healthSlider.value = health;
         }
+
+        StartCoroutine(AnimateMovement());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator AnimateMovement()
     {
-        if (!dead)
+        while (!dead)
         {
             inputVelocity = Vector3.zero;
-            inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
-            inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
+            inputVelocity.x = 0.0f;
+            inputVelocity.y = -2.0f;
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
+            inputVelocity.x = Random.Range(-1.0f, 1.0f) * moveSpeed;
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
         }
     }
 
     private void FixedUpdate()
     {
         Vector3 velocity = rb.velocity;
-        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.1f);
+        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.5f);
         rb.velocity = velocity;
-
-        //rb.velocity = inputVelocity;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
         string tag = coll.gameObject.tag;
         Debug.Log(tag);
-        if (tag == "Asteroid")
+        if (tag == "Asteroid" || tag == "Player")
         {
-            TakeDamage(ASTEROID_DAMAGE);
+            TakeDamage(health);
         }
-        else if (tag == "EnemyShip")
+        else if (tag == "Player")
         {
             TakeDamage(health);
         }
@@ -72,7 +71,7 @@ public class PlayerControlScript : MonoBehaviour
         Debug.Log(tag);
         if (tag == "Asteroid")
         {
-            TakeDamage(ASTEROID_DAMAGE);
+            TakeDamage(health);
         }
     }
 
@@ -87,6 +86,7 @@ public class PlayerControlScript : MonoBehaviour
             health = 0;
             dead = true;
 
+            StopAllCoroutines();
             StartCoroutine(AnimateDeath());
         }
         if (healthSlider != null)
@@ -100,18 +100,18 @@ public class PlayerControlScript : MonoBehaviour
     {
         // Spawn an explosion
         var explosion = GameObject.Instantiate(
-            playerExplosionPrefab, transform.position, Quaternion.identity
+            explosionPrefab, transform.position, Quaternion.identity
         );
         GameObject.Destroy(explosion, 2.5f);
 
-        // Slow time and wait for a few seconds
-        Time.timeScale = 0.25f;
+        // Wait for a few seconds
+        Time.timeScale = 0.75f;
         yield return new WaitForSeconds(0.25f);
-        playerSprite.SetActive(false);
-        yield return new WaitForSeconds(0.75f);
+        sprite.SetActive(false);
         Time.timeScale = 1.0f;
+        yield return new WaitForSeconds(0.75f);
 
-        // Destroy the player's ship
+        // Destroy the enemy's ship
         GameObject.Destroy(this.gameObject);
     }
 }
