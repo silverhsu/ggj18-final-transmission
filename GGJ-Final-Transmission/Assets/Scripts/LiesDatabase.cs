@@ -91,7 +91,7 @@ public class LiesDatabase : MonoBehaviour {
         StartCoroutine(InsertMessage_Coroutine(text));
     }
 
-    private IEnumerator InsertDeaths_Coroutine(System.Guid messageId, int deaths)
+    private IEnumerator InsertDeaths_Coroutine(string messageId, int deaths)
     {
         string url = string.Format(
             "{0}/Message/InsertDeathes?templateId={1}&level={2}&messageId={3}&deaths={4}",
@@ -106,7 +106,7 @@ public class LiesDatabase : MonoBehaviour {
         yield return request;
     }
 
-    public void InsertDeaths(System.Guid messageId, int deaths)
+    public void InsertDeaths(string messageId, int deaths)
     {
         StartCoroutine(InsertDeaths_Coroutine(messageId, deaths));
     }
@@ -123,7 +123,7 @@ public class LiesDatabase : MonoBehaviour {
 
     public void TestInsertDeaths()
     {
-        StartCoroutine(InsertDeaths_Coroutine(new System.Guid("6828f8af-2e86-4518-9002-0fbfd366e9c6"), 1));
+        StartCoroutine(InsertDeaths_Coroutine("6828f8af-2e86-4518-9002-0fbfd366e9c6", 1));
     }
 
 }
