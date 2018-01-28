@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject minePrefab = null;
     public GameObject enemyNormalPrefab = null;
     public GameObject enemyReversePrefab = null;
+    public GameObject destroyedShip = null;
     public Text levelText = null;
     public Text timeText = null;
 
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int level = 1;
 
     private float cameraHeight = 15.0f;
-    private float cameraWidth = 10.0f;
+    private float cameraWidth = 6.0f;
 
     void Awake()
     {
@@ -48,12 +49,26 @@ public class GameManager : MonoBehaviour
         Debug.LogFormat("Stage {0} starting...", value);
         templateId = value;
         database.templateId = value;
-        database.GetRandomMessages(list => StartCoroutine(ShowMessages(list)));
-
-        // Wait a few seconds between levels
+        
         var em = normalAsteroids.emission;
         em.rateOverTime = 0.0f;
+
         yield return new WaitForSeconds(3.0f);
+        database.GetRandomMessages(list => StartCoroutine(ShowMessages(list)));
+
+        for (int j = 0; j < 3; ++j)
+        {
+            GameObject mine = GameObject.Instantiate(
+                destroyedShip,
+                transform.position + 
+                    Vector3.up * 10.0f + 
+                    Vector3.right * Random.Range(-6.0f, 6.0f),
+                Quaternion.identity
+            );
+            GameObject.Destroy(mine, 20.0f);
+            yield return new WaitForSeconds(1.0f);
+        }
+
         Debug.LogFormat("Stage {0} started", value);
     }
 
@@ -137,9 +152,12 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 6; ++j)
             {
+                float x = Random.Range(-cameraWidth - 4.0f, cameraWidth + 4.0f);
                 GameObject mine = GameObject.Instantiate(
                     minePrefab,
-                    transform.position + Vector3.up * cameraHeight + Vector3.right * Random.Range(-cameraWidth, cameraWidth),
+                    transform.position +
+                        Vector3.up * cameraHeight +
+                        Vector3.right * x,
                     Quaternion.identity
                 );
                 GameObject.Destroy(mine, 20.0f);
@@ -158,11 +176,14 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
+            float x = Random.Range(-cameraWidth, cameraWidth);
             for (int j = 0; j < 6; ++j)
             {
                 GameObject enemy = GameObject.Instantiate(
                     enemyNormalPrefab,
-                    transform.position + Vector3.up * cameraHeight + Vector3.right * Random.Range(-cameraWidth, cameraWidth),
+                    transform.position + 
+                        Vector3.up * cameraHeight + 
+                        Vector3.right * x,
                     Quaternion.identity
                 );
                 GameObject.Destroy(enemy, 20.0f);
@@ -181,11 +202,14 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
+            float x = Random.Range(-cameraWidth, cameraWidth);
             for (int j = 0; j < 6; ++j)
             {
                 GameObject enemy = GameObject.Instantiate(
                     enemyReversePrefab,
-                    transform.position + Vector3.down * cameraHeight + Vector3.right * Random.Range(-cameraWidth, cameraWidth),
+                    transform.position +
+                        Vector3.down * cameraHeight +
+                        Vector3.right * x,
                     Quaternion.identity
                 );
                 GameObject.Destroy(enemy, 20.0f);
