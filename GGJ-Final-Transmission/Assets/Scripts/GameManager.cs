@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public string templateId = "test";
     public int level = 1;
 
-    private float cameraHeight = 15.0f;
+    private float cameraHeight = 10.0f;
     private float cameraWidth = 6.0f;
 
     void Awake()
@@ -176,9 +176,9 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
-            float x = Random.Range(-cameraWidth, cameraWidth);
             for (int j = 0; j < 6; ++j)
             {
+                float x = Random.Range(-cameraWidth, cameraWidth);
                 GameObject enemy = GameObject.Instantiate(
                     enemyNormalPrefab,
                     transform.position + 
@@ -202,9 +202,9 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
-            float x = Random.Range(-cameraWidth, cameraWidth);
             for (int j = 0; j < 6; ++j)
             {
+                float x = Random.Range(-cameraWidth, cameraWidth);
                 GameObject enemy = GameObject.Instantiate(
                     enemyReversePrefab,
                     transform.position +

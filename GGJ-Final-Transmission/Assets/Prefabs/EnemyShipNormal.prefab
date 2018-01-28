@@ -126,6 +126,8 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   explosionPrefab: {fileID: 1324021458447354, guid: bfb46f631f1bc164bbd2488efc0e995d,
     type: 2}
+  bulletPrefab: {fileID: 1226158629181966, guid: 6bd3f4f7bb724194786310d66f375fde,
+    type: 2}
   sprite: {fileID: 1066267229249782}
 --- !u!212 &212335901369696216
 SpriteRenderer:

@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 61731730700164934}
   rb: {fileID: 50390881713700816}
-  moveSpeed: 9
+  moveSpeed: 15
 --- !u!212 &212334226999193514
 SpriteRenderer:
   m_ObjectHideFlags: 1

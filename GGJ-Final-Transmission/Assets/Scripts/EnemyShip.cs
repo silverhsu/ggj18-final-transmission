@@ -16,6 +16,7 @@ public class EnemyShip : MonoBehaviour
     public bool dead = false;
     public Slider healthSlider = null;
     public GameObject explosionPrefab = null;
+    public GameObject bulletPrefab = null;
     public GameObject sprite = null;
 
     void Start()
@@ -39,10 +40,34 @@ public class EnemyShip : MonoBehaviour
             inputVelocity = Vector3.zero;
             inputVelocity.x = 0.0f;
             inputVelocity.y = verticalSpeed * -2.0f;
-            yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
+            yield return new WaitForSeconds(Random.Range(2.0f, 4.0f));
+
+            Fire();
+            yield return new WaitForSeconds(0.5f);
+
             inputVelocity.x = Random.Range(-2, 2) * horizontalSpeed;
             inputVelocity.y = verticalSpeed * -1.0f;
-            yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
+            yield return new WaitForSeconds(Random.Range(1.0f, 2.0f));
+
+            Fire();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void Fire()
+    {
+        if (bulletPrefab != null)
+        {
+            inputVelocity = Vector3.zero;
+            for (int i = -1; i <= 1; i += 2)
+            {
+                GameObject bullet = GameObject.Instantiate(
+                    bulletPrefab, 
+                    transform.position + Vector3.right * i * 0.25f,
+                    Quaternion.identity
+                );
+                GameObject.Destroy(bullet, 10.0f);
+            }
         }
     }
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4215800844457360}
   - component: {fileID: 198731865787071642}
   - component: {fileID: 199070726772230272}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LeftTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4434494861292986}
   - component: {fileID: 212613979861728896}
   - component: {fileID: 95967962628835870}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RightThruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114476047202007406}
   - component: {fileID: 60249583852522868}
   - component: {fileID: 50874643342124594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerShipPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4572923665620430}
   - component: {fileID: 212705910947419694}
   - component: {fileID: 95848603233723210}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LeftThruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4752761691531954}
   - component: {fileID: 212111781453961122}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4433252319840946}
   - component: {fileID: 198235177474396234}
   - component: {fileID: 199302300846704584}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RightTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
