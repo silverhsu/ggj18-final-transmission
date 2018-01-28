@@ -16393,7 +16393,7 @@ MonoBehaviour:
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test
-  level: 3
+  level: 1
 --- !u!114 &2054580591
 MonoBehaviour:
   m_ObjectHideFlags: 0
