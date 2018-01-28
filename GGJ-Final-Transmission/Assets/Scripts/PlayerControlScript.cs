@@ -19,6 +19,10 @@ public class PlayerControlScript : MonoBehaviour
     public GameObject playerExplosionPrefab = null;
     public GameObject playerSprite = null;
 
+    public float fireWeaponTimer = 0f;
+    public float fireWeaponThreshold = 0.25f;
+
+    public GameObject playerBullet;
 
     private TestTransmissionScript transmissionScript;
 
@@ -40,6 +44,12 @@ public class PlayerControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fireWeaponTimer -= Time.deltaTime;
+        if(Input.GetKey(KeyCode.Space) && fireWeaponTimer < 0)
+        {
+            fireWeapon();
+        }
+
         if (!dead)
         {
             inputVelocity = Vector3.zero;
@@ -122,5 +132,11 @@ public class PlayerControlScript : MonoBehaviour
 
         // Destroy the player's ship
         GameObject.Destroy(this.gameObject);
+    }
+
+    private void fireWeapon()
+    {
+        Instantiate(playerBullet, this.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        fireWeaponTimer = fireWeaponThreshold;
     }
 }

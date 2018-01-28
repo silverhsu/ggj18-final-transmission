@@ -6,6 +6,9 @@ public class TestTransmissionScript : MonoBehaviour {
 
     public TextMesh txtMesh;
 
+    public SpriteMask glassMask;
+    private Vector3 glassStartScale;
+    private Vector3 glassTargetScale;
 
     private string displayString = "";
     private string beginningString = "It is over for us.\nThis is our final transmission...";
@@ -41,13 +44,18 @@ public class TestTransmissionScript : MonoBehaviour {
 
     private EffectTextBackScript textBackScript;
 
+    public SpriteRenderer whiteOutRend;
+
     // Use this for initialization
     void Start () {
         textBackScript = GameObject.FindObjectOfType<EffectTextBackScript>();
+        glassStartScale = glassMask.transform.localScale;
+        glassMask.transform.localScale = Vector3.zero;
+        glassTargetScale = Vector3.zero;
         displayString = "";
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...";
         txtMesh.text = displayString;
-
+        
 	}
 
     // Update is called once per frame
@@ -145,15 +153,25 @@ public class TestTransmissionScript : MonoBehaviour {
             }
 
         }
+
+        if(typingTimer > (typingThreshold * 0.9f))
+        {
+            whiteOutRend.color = Color.Lerp(whiteOutRend.color, Color.white, Time.unscaledDeltaTime * 3f);
+        }
+
+        glassMask.transform.localScale = Vector3.Lerp(glassMask.transform.localScale, glassTargetScale, 4f * Time.unscaledDeltaTime);
     }
 
     public void triggerTransmission()
     {
         textBackScript.fadeInBack();
+        glassTargetScale = glassStartScale;
+        /*
         if (!glassLayer.gameObject.activeSelf)
         {
             glassLayer.gameObject.SetActive(true);
         }
+        */
             isTriggered = true;
     }
 }

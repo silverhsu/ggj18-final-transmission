@@ -63,6 +63,9 @@ public class EnemyShip : MonoBehaviour
         else if (tag == "Player")
         {
             TakeDamage(health);
+        }else if(tag == "PlayerBullet")
+        {
+            TakeDamage(health);
         }
     }
 
@@ -89,6 +92,7 @@ public class EnemyShip : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(AnimateDeath());
+            this.GetComponent<Collider2D>().enabled = false;
         }
         if (healthSlider != null)
         {

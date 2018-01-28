@@ -78,6 +78,7 @@ public class StartTextScript : MonoBehaviour {
                 {
                     isReachedEndOfMessage = false;
                     isTriggered = false;
+                    this.transform.localScale = new Vector3(0f, 0f, 0f);
                     textBack.fadeOutBlack();
                 }
             }
