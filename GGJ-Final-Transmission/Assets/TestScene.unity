@@ -578,7 +578,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.22794116, g: 0.22794116, b: 0.22794116, a: 0}
+  m_BackGroundColor: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -831,7 +831,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1866148375
+  randomSeed: 812712140
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4663,7 +4663,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -269289851
+  randomSeed: 577557302
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8837,7 +8837,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -516078697
+  randomSeed: -1885934460
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12171,7 +12171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4269315434214068, guid: 34c650eb9124b2c449c8367217ff7f48, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.18
       objectReference: {fileID: 0}
     - target: {fileID: 4269315434214068, guid: 34c650eb9124b2c449c8367217ff7f48, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12702,7 +12702,7 @@ MonoBehaviour:
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test
-  level: 1
+  level: 3
 --- !u!114 &2054580591
 MonoBehaviour:
   m_ObjectHideFlags: 0
