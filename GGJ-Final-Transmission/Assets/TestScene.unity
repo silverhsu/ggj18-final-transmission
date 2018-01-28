@@ -4371,7 +4371,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1654809117
+  randomSeed: -384428581
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11987,6 +11987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 2054580591}
   normalAsteroids: {fileID: 1117250463}
+  minePrefab: {fileID: 1830512038612108, guid: c6616490b1b697f43af52c7da7844fdd, type: 2}
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test

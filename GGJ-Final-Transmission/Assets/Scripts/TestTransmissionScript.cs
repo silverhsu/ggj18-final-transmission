@@ -136,9 +136,12 @@ public class TestTransmissionScript : MonoBehaviour {
                 isDoneTyping = true;
 
                 liesDB.InsertMessage(queryString);
+                //
                 textBackScript.fadeOutBlack();
                 //SUBMIT
                 Debug.Log(queryString);
+
+
             }
 
         }
