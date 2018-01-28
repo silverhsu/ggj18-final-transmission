@@ -8,17 +8,20 @@ public class GameManager : MonoBehaviour
     public LiesDatabase database = null;
     public ParticleSystem normalAsteroids = null;
     public GameObject minePrefab = null;
+    public GameObject enemyNormalPrefab = null;
+    public GameObject enemyPlayerRamPrefab = null;
     public Text levelText = null;
     public Text timeText = null;
 
     public string templateId = "test";
-    public int level = -1;
+    public int level = 1;
 
     public StartTextScript startTextScript;
 
     void Start()
     {
         //startTextScript = GameObject.FindObjectOfType<StartTextScript>();
+        --level;
         EndStage();
     }
 
@@ -67,9 +70,9 @@ public class GameManager : MonoBehaviour
     {
         ++level;
         database.level = level;
-        levelText.text = string.Format("Level {0:00}", level + 1);
+        levelText.text = string.Format("Level {0:00}", level);
 
-        switch (level % 6)
+        switch ((level - 1) % 6)
         {
             default:
             case 0:
@@ -134,7 +137,23 @@ public class GameManager : MonoBehaviour
     private IEnumerator template_enemy_normal()
     {
         StartStage("enemy_normal");
-        yield return new WaitForSeconds(1.0f);
+        var em = normalAsteroids.emission;
+        em.rateOverTime = 0.1f;
+
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 6; ++j)
+            {
+                GameObject enemy = GameObject.Instantiate(
+                    enemyNormalPrefab,
+                    transform.position + Vector3.up * 20 + Vector3.right * Random.Range(-10, 10),
+                    Quaternion.identity
+                );
+                GameObject.Destroy(enemy, 20.0f);
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return new WaitForSeconds(3.0f);
+        }
         EndStage();
     }
 

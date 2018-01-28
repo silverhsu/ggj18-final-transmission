@@ -39,7 +39,8 @@ public class EnemyShip : MonoBehaviour
             inputVelocity.x = 0.0f;
             inputVelocity.y = -2.0f;
             yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
-            inputVelocity.x = Random.Range(-1.0f, 1.0f) * moveSpeed;
+            inputVelocity.x = Mathf.Clamp(Random.Range(-1.0f, 1.0f) * moveSpeed, -5, 5);
+            inputVelocity.y = -1.0f;
             yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
         }
     }
