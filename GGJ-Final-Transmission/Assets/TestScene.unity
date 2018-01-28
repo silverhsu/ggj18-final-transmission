@@ -4020,7 +4020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &472862292
 Transform:
   m_ObjectHideFlags: 0
@@ -4371,7 +4371,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1654809117
+  randomSeed: -384428581
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7745,7 +7745,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: cfaeb9c1ce07ff241a141bc20624ddfb, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4288151425
+    rgba: 4282307327
 --- !u!23 &734346953
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7808,13 +7808,13 @@ MonoBehaviour:
       time: 0.19797488
       value: 1.0032861
       inSlope: 0.02694798
-      outSlope: 4.9439645
+      outSlope: 0.18979596
       tangentMode: 1
     - serializedVersion: 2
-      time: 1.00531
-      value: 0.9328308
-      inSlope: -1.0165062
-      outSlope: -1.0165062
+      time: 0.62213135
+      value: 1.5946693
+      inSlope: 5.3176703
+      outSlope: 5.3176703
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7832,7 +7832,7 @@ MonoBehaviour:
       time: 0.20117539
       value: 0.9988156
       inSlope: -0.04532636
-      outSlope: -1.3836561
+      outSlope: -4.08469
       tangentMode: 1
     - serializedVersion: 2
       time: 1.0012658
@@ -11987,6 +11987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 2054580591}
   normalAsteroids: {fileID: 1117250463}
+  minePrefab: {fileID: 1830512038612108, guid: c6616490b1b697f43af52c7da7844fdd, type: 2}
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test

@@ -53,7 +53,13 @@ public class GameManager : MonoBehaviour
         //{
         //    Debug.Log(msg.Text);
         //}
-        startTextScript.showMessage(list[0].Text);
+        if (list != null)
+        {
+            startTextScript.showMessage(list[0].Text);
+        }else
+        {
+            Debug.Log("List was null");
+        }
         yield return new WaitForSeconds(1);
     }
 
