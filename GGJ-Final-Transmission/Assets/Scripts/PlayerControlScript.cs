@@ -142,9 +142,9 @@ public class PlayerControlScript : MonoBehaviour
         // Slow time and wait for a few seconds
         //Time.timeScale = 0.25f;
         Time.timeScale = 0.05f;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.05f);
         playerSprite.SetActive(false);
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.95f);
         Time.timeScale = 1.0f;
 
         // Destroy the player's ship
