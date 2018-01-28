@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public LiesDatabase database = null;
     public ParticleSystem normalAsteroids = null;
+    public GameObject minePrefab = null;
     public Text levelText = null;
     public Text timeText = null;
 
@@ -81,8 +82,22 @@ public class GameManager : MonoBehaviour
     {
         StartStage("asteroids_mines");
         var em = normalAsteroids.emission;
-        em.rateOverTime = 0.5f;
-        yield return new WaitForSeconds(30.0f);
+        em.rateOverTime = 0.1f;
+
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 6; ++j)
+            {
+                GameObject mine = GameObject.Instantiate(
+                    minePrefab,
+                    transform.position + Vector3.up * 20 + Vector3.right * Random.Range(-10, 10),
+                    Quaternion.identity
+                );
+                GameObject.Destroy(mine, 20.0f);
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return new WaitForSeconds(3.0f);
+        }
         EndStage();
     }
 
