@@ -84,6 +84,7 @@ public class LiesDatabase : MonoBehaviour {
         Debug.Log(url);
         WWW request = new WWW(url, new WWWForm());
         yield return request;
+        Debug.LogFormat("Message sent: {0}, {1}", request.text, text);
     }
 
     public void InsertMessage(string text)
