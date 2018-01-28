@@ -26,6 +26,10 @@ public class PlayerControlScript : MonoBehaviour
 
     private TestTransmissionScript transmissionScript;
 
+    public GameObject playerShipAnchor;
+
+    private Vector3 prevPos;
+
     // Use this for initialization
     void Start()
     {
@@ -39,6 +43,7 @@ public class PlayerControlScript : MonoBehaviour
             healthSlider.maxValue = maxHealth;
             healthSlider.value = health;
         }
+        prevPos = this.transform.position;
     }
 
     // Update is called once per frame
@@ -56,6 +61,10 @@ public class PlayerControlScript : MonoBehaviour
             inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
             inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
         }
+
+        Vector3 tempDelta = prevPos - this.transform.position;
+        playerShipAnchor.transform.rotation = Quaternion.Euler(0f, 0f, 180f * tempDelta.x);
+        prevPos = this.transform.position;
     }
 
     private void FixedUpdate()

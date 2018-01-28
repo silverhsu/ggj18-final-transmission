@@ -303,6 +303,11 @@ MonoBehaviour:
   playerExplosionPrefab: {fileID: 1324021458447354, guid: bfb46f631f1bc164bbd2488efc0e995d,
     type: 2}
   playerSprite: {fileID: 1764017762349682}
+  fireWeaponTimer: 0
+  fireWeaponThreshold: 0.25
+  playerBullet: {fileID: 1614507066357338, guid: 264f8f1aff70b2c45a1fddc6c187e833,
+    type: 2}
+  playerShipAnchor: {fileID: 1764017762349682}
 --- !u!198 &198235177474396234
 ParticleSystem:
   m_ObjectHideFlags: 1
