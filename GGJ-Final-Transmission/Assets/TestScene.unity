@@ -615,7 +615,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2028810212
+  randomSeed: 263781800
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1175,7 +1175,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4869,7 +4869,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -8103,8 +8103,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 4
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8207,8 +8207,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8506,7 +8506,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 20, z: 0}
     m_Rotation: {x: 0, y: 0, z: 180}
-    m_Scale: {x: 30, y: 1, z: 1}
+    m_Scale: {x: 10, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -8615,7 +8615,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -11642,8 +11642,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2054580589}
   - component: {fileID: 2054580588}
+  - component: {fileID: 2054580591}
+  - component: {fileID: 2054580590}
   m_Layer: 5
+<<<<<<< HEAD
   m_Name: TransmissionObject
+=======
+  m_Name: GameManager
+>>>>>>> 4fd3e37cb61d7c4010bd514f57596dc9b8e94d13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11696,3 +11702,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054580590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054580587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954aabdcc35dc9349b73306d1eb17489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateId: test
+  level: -1
+--- !u!114 &2054580591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054580587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c14aea729a285248ac45a1ad83c5625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateId: test
+  level: 0
+  output: {fileID: 0}
