@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerControlScript : MonoBehaviour
 {
     public const int ASTEROID_DAMAGE = 6;
+    public const int ENEMY_BULLET_DAMAGE = 1;
 
     private float moveSpeed = 5f;
     private Vector3 prevPos = Vector3.zero;
@@ -95,6 +96,10 @@ public class PlayerControlScript : MonoBehaviour
         else if (tag == "EnemyShip")
         {
             TakeDamage(health);
+        }
+        else if (tag == "EnemyBullet")
+        {
+            TakeDamage(ENEMY_BULLET_DAMAGE);
         }
     }
 
