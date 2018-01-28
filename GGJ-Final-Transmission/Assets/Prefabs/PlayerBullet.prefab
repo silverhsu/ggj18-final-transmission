@@ -257,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6087646540bf8c84fbbccc7a82a2a560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 61731730700164934}
+  rb: {fileID: 50390881713700816}
+  moveSpeed: 9
 --- !u!212 &212334226999193514
 SpriteRenderer:
   m_ObjectHideFlags: 1

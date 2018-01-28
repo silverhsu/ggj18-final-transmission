@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControlScript : MonoBehaviour
@@ -8,16 +9,17 @@ public class PlayerControlScript : MonoBehaviour
     public const int ASTEROID_DAMAGE = 6;
 
     private float moveSpeed = 5f;
+    private Vector3 prevPos = Vector3.zero;
     private Vector3 inputVelocity = Vector3.zero;
     private Vector3 accel = Vector3.zero;
-    private Rigidbody2D rb = null;
-
+    
     public int maxHealth = 6;
     public int health = 6;
     public bool dead = false;
     public Slider healthSlider = null;
     public GameObject playerExplosionPrefab = null;
     public GameObject playerSprite = null;
+    public Rigidbody2D rb = null;
 
     public float fireWeaponTimer = 0f;
     public float fireWeaponThreshold = 0.25f;
@@ -26,50 +28,51 @@ public class PlayerControlScript : MonoBehaviour
 
     private TestTransmissionScript transmissionScript;
 
-    public GameObject playerShipAnchor;
-
-    private Vector3 prevPos;
-
-    private Rigidbody2D rigid;
+    //public GameObject playerShipAnchor;
+    //private Rigidbody2D rigid;
 
     // Use this for initialization
     void Start()
     {
-        
         transmissionScript = GameObject.FindObjectOfType<TestTransmissionScript>();
 
-        rb = GetComponent<Rigidbody2D>();
-        health = maxHealth;
+        //rb = GetComponent<Rigidbody2D>();
+        prevPos = this.transform.position;
 
+        health = maxHealth;
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = health;
         }
-        prevPos = this.transform.position;
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        fireWeaponTimer -= Time.deltaTime;
-        if(Input.GetKey(KeyCode.Space) && fireWeaponTimer < 0)
-        {
-            fireWeapon();
-        }
-
         if (!dead)
         {
             inputVelocity = Vector3.zero;
             inputVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
             inputVelocity.y = Input.GetAxis("Vertical") * moveSpeed;
-        }
 
-        Vector3 tempDelta = prevPos - this.transform.position;
-        playerShipAnchor.transform.rotation = Quaternion.Euler(0f, 0f, 180f * tempDelta.x);
-        prevPos = this.transform.position;
+            // FIXME: listen for button instead of key
+            fireWeaponTimer = Mathf.Max(fireWeaponTimer - Time.deltaTime, 0.0f);
+            if (Input.GetKey(KeyCode.Space) && fireWeaponTimer <= 0)
+            {
+                FireWeapon();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            // Rotate ship as player moves left and right
+            Vector3 curPos = this.transform.position;
+            Vector3 tempDelta = prevPos - curPos;
+            playerSprite.transform.rotation = Quaternion.Euler(0f, 0f, 180f * tempDelta.x);
+            prevPos = curPos;
+        }
     }
 
     private void FixedUpdate()
@@ -148,7 +151,7 @@ public class PlayerControlScript : MonoBehaviour
         GameObject.Destroy(this.gameObject);
     }
 
-    private void fireWeapon()
+    private void FireWeapon()
     {
         Instantiate(playerBullet, this.transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         fireWeaponTimer = fireWeaponThreshold;

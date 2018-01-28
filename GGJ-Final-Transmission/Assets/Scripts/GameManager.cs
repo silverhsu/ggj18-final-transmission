@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public string templateId = "test";
     public int level = 1;
 
-    private float adjustmentFix = 3.0f;
-
     public StartTextScript startTextScript;
 
     void Awake()
@@ -27,9 +25,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Debug.LogFormat("Game starting at level {0}", level);
         //startTextScript = GameObject.FindObjectOfType<StartTextScript>();
         --level;
-        EndStage();
+        StartCoroutine(EndStage());
     }
 
     private void Update()
@@ -42,11 +41,18 @@ public class GameManager : MonoBehaviour
         );
     }
 
-    private void StartStage(string value)
+    private IEnumerator StartStage(string value)
     {
+        Debug.LogFormat("Stage {0} starting...", value);
         templateId = value;
         database.templateId = value;
         database.GetRandomMessages(list => StartCoroutine(ShowMessages(list)));
+
+        // Wait a few seconds between levels
+        var em = normalAsteroids.emission;
+        em.rateOverTime = 0.0f;
+        yield return new WaitForSeconds(3.0f);
+        Debug.LogFormat("Stage {0} started", value);
     }
 
     private IEnumerator ShowMessages(GetRandomMessages_Result[] list)
@@ -58,22 +64,20 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(5);
         }
         */
-
-        //foreach(var msg in list)
-        //{
-        //    Debug.Log(msg.Text);
-        //}
-        if (list.Length > 0)
+        
+        if (list != null && list.Length > 0)
         {
             startTextScript.showMessage(list[0].Text);
-        }else
+        }
+        else
         {
-            Debug.Log("List was null");
+            Debug.LogWarning("No message retrieved for template: " + templateId);
+            startTextScript.showMessage("*static*");
         }
         yield return new WaitForSeconds(1);
     }
 
-    private void EndStage()
+    private IEnumerator EndStage()
     {
         ++level;
         database.level = level;
@@ -101,16 +105,14 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(template_wormholes());
                 break;
         }
+
+        yield break;
     }
 	
     private IEnumerator template_asteroids_normal()
     {
-        StartStage("asteroids_normal");
+        yield return StartStage("asteroids_normal");
         var em = normalAsteroids.emission;
-
-        //37 second fix
-        em.rateOverTime = 0.0f;
-        yield return new WaitForSeconds(adjustmentFix);
 
         em.rateOverTime = 0.0f;
         yield return new WaitForSeconds(5.0f);
@@ -120,18 +122,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         em.rateOverTime = 0.0f;
         yield return new WaitForSeconds(5.0f);
-        EndStage();
+        yield return EndStage();
     }
 
     private IEnumerator template_asteroids_mines()
     {
-        StartStage("asteroids_mines");
+        yield return StartStage("asteroids_mines");
         var em = normalAsteroids.emission;
-
-        //37 second fix
-        em.rateOverTime = 0.0f;
-        yield return new WaitForSeconds(adjustmentFix);
-
         em.rateOverTime = 0.1f;
 
         for (int i = 0; i < 5; ++i)
@@ -148,12 +145,12 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForSeconds(3.0f);
         }
-        EndStage();
+        yield return EndStage();
     }
 
     private IEnumerator template_enemy_normal()
     {
-        StartStage("enemy_normal");
+        yield return StartStage("enemy_normal");
         var em = normalAsteroids.emission;
         em.rateOverTime = 0.1f;
 
@@ -171,28 +168,28 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForSeconds(3.0f);
         }
-        EndStage();
+        yield return EndStage();
     }
 
     private IEnumerator template_enemy_playerram()
     {
-        StartStage("enemy_playerram");
+        yield return StartStage("enemy_playerram");
         yield return new WaitForSeconds(1.0f);
-        EndStage();
+        yield return EndStage();
     }
 
     private IEnumerator template_blackholes()
     {
-        StartStage("blackholes");
+        yield return StartStage("blackholes");
         yield return new WaitForSeconds(1.0f);
-        EndStage();
+        yield return EndStage();
     }
 
     private IEnumerator template_wormholes()
     {
-        StartStage("wormholes");
+        yield return StartStage("wormholes");
         yield return new WaitForSeconds(1.0f);
-        EndStage();
+        yield return EndStage();
     }
 
 }
