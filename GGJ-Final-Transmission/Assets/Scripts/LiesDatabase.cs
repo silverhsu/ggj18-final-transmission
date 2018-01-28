@@ -37,7 +37,7 @@ public class LiesDatabase : MonoBehaviour {
         return wrapper.array;
     }
 
-    private IEnumerator GetRandomMessages(System.Action<GetRandomMessages_Result[]> callback)
+    private IEnumerator GetRandomMessages_Coroutine(System.Action<GetRandomMessages_Result[]> callback)
     {
         string url = string.Format(
             "{0}/Message/GetRandomMessages?templateId={1}&level={2}",
@@ -67,7 +67,12 @@ public class LiesDatabase : MonoBehaviour {
         }
     }
 
-    private IEnumerator InsertMessage(string text)
+    public void GetRandomMessages(System.Action<GetRandomMessages_Result[]> callback)
+    {
+        StartCoroutine(GetRandomMessages_Coroutine(callback));
+    }
+
+    private IEnumerator InsertMessage_Coroutine(string text)
     {
         string url = string.Format(
             "{0}/Message/InsertMessage?templateId={1}&level={2}&text={3}",
@@ -81,7 +86,12 @@ public class LiesDatabase : MonoBehaviour {
         yield return request;
     }
 
-    private IEnumerator InsertDeaths(System.Guid messageId, int deaths)
+    public void InsertMessage(string text)
+    {
+        StartCoroutine(InsertMessage_Coroutine(text));
+    }
+
+    private IEnumerator InsertDeaths_Coroutine(System.Guid messageId, int deaths)
     {
         string url = string.Format(
             "{0}/Message/InsertDeathes?templateId={1}&level={2}&messageId={3}&deaths={4}",
@@ -96,19 +106,24 @@ public class LiesDatabase : MonoBehaviour {
         yield return request;
     }
 
+    public void InsertDeaths(System.Guid messageId, int deaths)
+    {
+        StartCoroutine(InsertDeaths_Coroutine(messageId, deaths));
+    }
+
     public void TestRandomMessages()
     {
-        StartCoroutine(GetRandomMessages(null));
+        StartCoroutine(GetRandomMessages_Coroutine(null));
     }
 
     public void TestInsertMessage()
     {
-        StartCoroutine(InsertMessage("wasd"));
+        StartCoroutine(InsertMessage_Coroutine("wasd"));
     }
 
     public void TestInsertDeaths()
     {
-        StartCoroutine(InsertDeaths(new System.Guid("6828f8af-2e86-4518-9002-0fbfd366e9c6"), 1));
+        StartCoroutine(InsertDeaths_Coroutine(new System.Guid("6828f8af-2e86-4518-9002-0fbfd366e9c6"), 1));
     }
 
 }
