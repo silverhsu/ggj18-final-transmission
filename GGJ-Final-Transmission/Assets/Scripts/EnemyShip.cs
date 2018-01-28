@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class EnemyShip : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float horizontalSpeed = 5f;
+    public float verticalSpeed = 1.0f;
     private Vector3 inputVelocity = Vector3.zero;
     private Vector3 accel = Vector3.zero;
     private Rigidbody2D rb = null;
@@ -37,10 +38,10 @@ public class EnemyShip : MonoBehaviour
         {
             inputVelocity = Vector3.zero;
             inputVelocity.x = 0.0f;
-            inputVelocity.y = -2.0f;
+            inputVelocity.y = verticalSpeed * -2.0f;
             yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
-            inputVelocity.x = Mathf.Clamp(Random.Range(-1.0f, 1.0f) * moveSpeed, -5, 5);
-            inputVelocity.y = -1.0f;
+            inputVelocity.x = Random.Range(-2, 2) * horizontalSpeed;
+            inputVelocity.y = verticalSpeed * -1.0f;
             yield return new WaitForSeconds(Random.Range(0.5f, 1.0f));
         }
     }

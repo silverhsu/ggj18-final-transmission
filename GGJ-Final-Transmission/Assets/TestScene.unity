@@ -12692,17 +12692,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   database: {fileID: 2054580591}
+  startTextScript: {fileID: 734346954}
   normalAsteroids: {fileID: 1117250463}
   minePrefab: {fileID: 1830512038612108, guid: c6616490b1b697f43af52c7da7844fdd, type: 2}
   enemyNormalPrefab: {fileID: 1624465695023756, guid: 99b84de3af0ccf14b9244a8ac0a6b367,
     type: 2}
-  enemyPlayerRamPrefab: {fileID: 1624465695023756, guid: 99b84de3af0ccf14b9244a8ac0a6b367,
+  enemyReversePrefab: {fileID: 1833940485441640, guid: 2ac60cc73f9b2a242a5599d38450b96a,
     type: 2}
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test
-  level: 1
-  startTextScript: {fileID: 734346954}
+  level: 4
 --- !u!114 &2054580591
 MonoBehaviour:
   m_ObjectHideFlags: 0
