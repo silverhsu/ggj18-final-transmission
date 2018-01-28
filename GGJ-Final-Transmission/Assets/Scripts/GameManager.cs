@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public LiesDatabase database = null;
+    public ParticleSystem normalAsteroids = null;
+    public Text levelText = null;
+    public Text timeText = null;
+
     public string templateId = "test";
     public int level = -1;
     
     void Start()
     {
         EndStage();
+    }
+
+    private void Update()
+    {
+        int time = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+        timeText.text = string.Format(
+            "{0:00}:{1:00}",
+            time / 60,
+            time % 60
+        );
     }
 
     private void StartStage(string value)
@@ -23,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         ++level;
         database.level = level;
+        levelText.text = string.Format("Level {0:00}", level + 1);
 
         switch (level % 6)
         {
@@ -51,14 +67,22 @@ public class GameManager : MonoBehaviour
     private IEnumerator template_asteroids_normal()
     {
         StartStage("asteroids_normal");
-        yield return new WaitForSeconds(1.0f);
+        var em = normalAsteroids.emission;
+        em.rateOverTime = 2.0f;
+        yield return new WaitForSeconds(20.0f);
+        em.rateOverTime = 3.0f;
+        yield return new WaitForSeconds(5.0f);
+        em.rateOverTime = 0.0f;
+        yield return new WaitForSeconds(5.0f);
         EndStage();
     }
 
     private IEnumerator template_asteroids_mines()
     {
         StartStage("asteroids_mines");
-        yield return new WaitForSeconds(1.0f);
+        var em = normalAsteroids.emission;
+        em.rateOverTime = 0.5f;
+        yield return new WaitForSeconds(30.0f);
         EndStage();
     }
 
