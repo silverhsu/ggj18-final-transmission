@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerControlScript : MonoBehaviour
 {
-    public const int ASTEROID_DAMAGE = 2;
+    public const int ASTEROID_DAMAGE = 6;
 
     private float moveSpeed = 5f;
     private Vector3 inputVelocity = Vector3.zero;
