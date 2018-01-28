@@ -4,6 +4,19 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class GetRandomMessages_Result
+{
+    public string MessageId;
+    public string Text;
+}
+
+[System.Serializable]
+public class JsonArray<T>
+{
+    public T[] array;
+}
+
 public class LiesDatabase : MonoBehaviour {
     
     private const string SERVER_URL = "http://youlietome-dev.us-east-2.elasticbeanstalk.com";
@@ -11,19 +24,6 @@ public class LiesDatabase : MonoBehaviour {
     public string templateId = "test";
     public int level = 0;
     public Text output = null;
-
-    [System.Serializable]
-    public class GetRandomMessages_Result
-    {
-        public System.Guid MessageId { get; set; }
-        public string Text { get; set; }
-    }
-
-    [System.Serializable]
-    public class JsonArray<T>
-    {
-        public T[] array;
-    }
 
     public static T ParseJsonObject<T>(string json)
     {

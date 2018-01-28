@@ -587,7 +587,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1790021839
+  randomSeed: 1003714369
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4013,13 +4013,14 @@ GameObject:
   m_Component:
   - component: {fileID: 472862292}
   - component: {fileID: 472862293}
+  - component: {fileID: 472862294}
   m_Layer: 5
-  m_Name: whiteSquare16
+  m_Name: textBackScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &472862292
 Transform:
   m_ObjectHideFlags: 0
@@ -4027,10 +4028,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 472862291}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.9194608, z: -0.8892151}
-  m_LocalScale: {x: -20.24, y: 2.7227316, z: 1}
+  m_LocalPosition: {x: 0, y: -3.7100003, z: 10.27}
+  m_LocalScale: {x: -25.720646, y: 3.4600003, z: 1.2707827}
   m_Children: []
-  m_Father: {fileID: 944598407}
+  m_Father: {fileID: 545700846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &472862293
@@ -4077,6 +4078,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &472862294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472862291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec6bb84ab844ad41b89f52d32ba6a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &499104337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,7 +4113,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 499104337}
-  m_Text: This is our final transmission.
+  m_Text: 'This is our final transmission.
+
+'
   m_OffsetZ: 0
   m_CharacterSize: 0.07
   m_LineSpacing: 1
@@ -4221,6 +4235,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 472862292}
   - {fileID: 944598407}
   m_Father: {fileID: 1496426530}
   m_RootOrder: 0
@@ -4356,7 +4371,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -864439548
+  randomSeed: 1654809117
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7677,6 +7692,157 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &734346950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 734346951}
+  - component: {fileID: 734346953}
+  - component: {fileID: 734346952}
+  - component: {fileID: 734346954}
+  m_Layer: 5
+  m_Name: StartText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734346951
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734346950}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.8553424, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2054580589}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &734346952
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734346950}
+  m_Text: '
+
+    This is our start transmission.'
+  m_OffsetZ: 0
+  m_CharacterSize: 0.07
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 60
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: cfaeb9c1ce07ff241a141bc20624ddfb, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4288151425
+--- !u!23 &734346953
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734346950}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cfaeb9c1ce07ff241a141bc20624ddfb, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &734346954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734346950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bb6f3415fe78445befee8cc0603d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayString: 
+  contentString: 
+  textKeyTimer: 0
+  fadeOutTimer: 0
+  xScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.000034332275
+      value: 1.0007324
+      inSlope: -0.03694866
+      outSlope: -0.03694866
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.19797488
+      value: 1.0032861
+      inSlope: 0.02694798
+      outSlope: 4.9439645
+      tangentMode: 1
+    - serializedVersion: 2
+      time: 1.00531
+      value: 0.9328308
+      inSlope: -1.0165062
+      outSlope: -1.0165062
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  yScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.20117539
+      value: 0.9988156
+      inSlope: -0.04532636
+      outSlope: -1.3836561
+      tangentMode: 1
+    - serializedVersion: 2
+      time: 1.0012658
+      value: 0.0004682577
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &797753662
 GameObject:
   m_ObjectHideFlags: 0
@@ -7769,10 +7935,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11.4}
   m_LocalScale: {x: 1.270783, y: 1.2707827, z: 1.2707827}
-  m_Children:
-  - {fileID: 472862292}
+  m_Children: []
   m_Father: {fileID: 545700846}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &944598408
 SpriteRenderer:
@@ -8091,7 +8256,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1428853612
+  randomSeed: -551569774
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11805,6 +11970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499104340}
+  - {fileID: 734346951}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11825,6 +11991,7 @@ MonoBehaviour:
   timeText: {fileID: 1089842898}
   templateId: test
   level: -1
+  startTextScript: {fileID: 734346954}
 --- !u!114 &2054580591
 MonoBehaviour:
   m_ObjectHideFlags: 0

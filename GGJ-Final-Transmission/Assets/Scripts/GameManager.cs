@@ -13,9 +13,12 @@ public class GameManager : MonoBehaviour
 
     public string templateId = "test";
     public int level = -1;
-    
+
+    public StartTextScript startTextScript;
+
     void Start()
     {
+        //startTextScript = GameObject.FindObjectOfType<StartTextScript>();
         EndStage();
     }
 
@@ -33,6 +36,25 @@ public class GameManager : MonoBehaviour
     {
         templateId = value;
         database.templateId = value;
+        database.GetRandomMessages(list => StartCoroutine(ShowMessages(list)));
+    }
+
+    private IEnumerator ShowMessages(GetRandomMessages_Result[] list)
+    {
+        /*
+        foreach (var msg in list)
+        {
+            startTextScript.showMessage(msg.Text);
+            yield return new WaitForSeconds(5);
+        }
+        */
+
+        //foreach(var msg in list)
+        //{
+        //    Debug.Log(msg.Text);
+        //}
+        startTextScript.showMessage(list[0].Text);
+        yield return new WaitForSeconds(1);
     }
 
     private void EndStage()
@@ -69,8 +91,10 @@ public class GameManager : MonoBehaviour
     {
         StartStage("asteroids_normal");
         var em = normalAsteroids.emission;
+        em.rateOverTime = 0.0f;
+        yield return new WaitForSeconds(5.0f);
         em.rateOverTime = 2.0f;
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(15.0f);
         em.rateOverTime = 3.0f;
         yield return new WaitForSeconds(5.0f);
         em.rateOverTime = 0.0f;
