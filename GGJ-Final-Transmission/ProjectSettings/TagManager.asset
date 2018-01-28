@@ -18,8 +18,8 @@ TagManager:
   - 
   - EnemyShip
   - Asteroid
-  - 
-  - 
+  - EnemyBullet
+  - PlayerBullet
   - 
   - 
   - 
