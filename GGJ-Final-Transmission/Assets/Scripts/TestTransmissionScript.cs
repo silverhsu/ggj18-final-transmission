@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestTransmissionScript : MonoBehaviour {
 
@@ -30,7 +31,7 @@ public class TestTransmissionScript : MonoBehaviour {
     private int typeOverflowAbsThreshold = 40;
 
     public float typingTimer = 0f;
-    private float typingThreshold = 12f;
+    private float typingThreshold = 8f;
 
     private bool isDoneTyping = false;
 
@@ -46,6 +47,9 @@ public class TestTransmissionScript : MonoBehaviour {
 
     public SpriteRenderer whiteOutRend;
 
+    public TextMesh detonationText;
+    private Color startColorDetonate;
+
     // Use this for initialization
     void Start () {
         textBackScript = GameObject.FindObjectOfType<EffectTextBackScript>();
@@ -55,7 +59,8 @@ public class TestTransmissionScript : MonoBehaviour {
         displayString = "";
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...";
         txtMesh.text = displayString;
-        
+        startColorDetonate = detonationText.color;
+        detonationText.color = Color.clear;
 	}
 
     // Update is called once per frame
@@ -148,18 +153,25 @@ public class TestTransmissionScript : MonoBehaviour {
                 textBackScript.fadeOutBlack();
                 //SUBMIT
                 Debug.Log(queryString);
-
-
+                
+                
             }
 
+            detonationText.color = Color.Lerp(detonationText.color, startColorDetonate, Time.unscaledDeltaTime * 1f);
+            detonationText.text = "Detonation in " + (typingThreshold - typingTimer).ToString("F3");
         }
 
-        if(typingTimer > (typingThreshold * 0.9f))
+        if(typingTimer > typingThreshold + 1.5f)
         {
-            whiteOutRend.color = Color.Lerp(whiteOutRend.color, Color.white, Time.unscaledDeltaTime * 3f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        glassMask.transform.localScale = Vector3.Lerp(glassMask.transform.localScale, glassTargetScale, 4f * Time.unscaledDeltaTime);
+        if(typingTimer > (typingThreshold * 0.8f))
+        {
+            whiteOutRend.color = Color.Lerp(whiteOutRend.color, Color.white, Time.unscaledDeltaTime * 2f);
+        }
+
+        glassMask.transform.localScale = Vector3.Lerp(glassMask.transform.localScale, glassTargetScale, 3f * Time.unscaledDeltaTime);
     }
 
     public void triggerTransmission()

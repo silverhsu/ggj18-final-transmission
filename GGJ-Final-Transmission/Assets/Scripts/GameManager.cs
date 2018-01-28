@@ -16,7 +16,14 @@ public class GameManager : MonoBehaviour
     public string templateId = "test";
     public int level = 1;
 
+    private float adjustmentFix = 3.0f;
+
     public StartTextScript startTextScript;
+
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
 
     void Start()
     {
@@ -100,6 +107,11 @@ public class GameManager : MonoBehaviour
     {
         StartStage("asteroids_normal");
         var em = normalAsteroids.emission;
+
+        //37 second fix
+        em.rateOverTime = 0.0f;
+        yield return new WaitForSeconds(adjustmentFix);
+
         em.rateOverTime = 0.0f;
         yield return new WaitForSeconds(5.0f);
         em.rateOverTime = 2.0f;
@@ -115,6 +127,11 @@ public class GameManager : MonoBehaviour
     {
         StartStage("asteroids_mines");
         var em = normalAsteroids.emission;
+
+        //37 second fix
+        em.rateOverTime = 0.0f;
+        yield return new WaitForSeconds(adjustmentFix);
+
         em.rateOverTime = 0.1f;
 
         for (int i = 0; i < 5; ++i)

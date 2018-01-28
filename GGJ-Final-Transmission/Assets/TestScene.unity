@@ -8406,6 +8406,91 @@ Transform:
   m_PrefabParentObject: {fileID: 4269315434214068, guid: 34c650eb9124b2c449c8367217ff7f48,
     type: 2}
   m_PrefabInternal: {fileID: 1289313275}
+--- !u!1 &939395243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 939395244}
+  - component: {fileID: 939395246}
+  - component: {fileID: 939395245}
+  m_Layer: 5
+  m_Name: DetonationText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939395244
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 939395243}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2054580589}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &939395245
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 939395243}
+  m_Text: 'Detonation in '
+  m_OffsetZ: 0
+  m_CharacterSize: 0.2
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 60
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: cfaeb9c1ce07ff241a141bc20624ddfb, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4282307327
+--- !u!23 &939395246
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 939395243}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cfaeb9c1ce07ff241a141bc20624ddfb, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &944598406
 GameObject:
   m_ObjectHideFlags: 0
@@ -8469,7 +8554,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f8b3c2a2768cc442b20f9ab204b3fb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da4342c8f01f5e3478a6f53c3db73304, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12577,6 +12662,7 @@ MonoBehaviour:
   glassLayer: {fileID: 944598408}
   liesDB: {fileID: 2054580591}
   whiteOutRend: {fileID: 197478608}
+  detonationText: {fileID: 939395245}
 --- !u!4 &2054580589
 Transform:
   m_ObjectHideFlags: 0
@@ -12590,6 +12676,7 @@ Transform:
   - {fileID: 499104340}
   - {fileID: 734346951}
   - {fileID: 1130298}
+  - {fileID: 939395244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12614,7 +12701,7 @@ MonoBehaviour:
   levelText: {fileID: 1481761798}
   timeText: {fileID: 1089842898}
   templateId: test
-  level: 3
+  level: 1
   startTextScript: {fileID: 734346954}
 --- !u!114 &2054580591
 MonoBehaviour:

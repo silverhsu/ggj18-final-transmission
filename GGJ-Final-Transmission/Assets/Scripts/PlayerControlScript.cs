@@ -30,9 +30,12 @@ public class PlayerControlScript : MonoBehaviour
 
     private Vector3 prevPos;
 
+    private Rigidbody2D rigid;
+
     // Use this for initialization
     void Start()
     {
+        
         transmissionScript = GameObject.FindObjectOfType<TestTransmissionScript>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +47,8 @@ public class PlayerControlScript : MonoBehaviour
             healthSlider.value = health;
         }
         prevPos = this.transform.position;
+
+
     }
 
     // Update is called once per frame
@@ -70,7 +75,7 @@ public class PlayerControlScript : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 velocity = rb.velocity;
-        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.01f);
+        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.002f);
         rb.velocity = velocity;
 
         //rb.velocity = inputVelocity;
