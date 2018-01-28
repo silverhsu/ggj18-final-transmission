@@ -30,81 +30,100 @@ public class TestTransmissionScript : MonoBehaviour {
 
     public AnimationCurve probabilityCurve;
 
-	// Use this for initialization
-	void Start () {
+    public SpriteRenderer glassLayer;
+
+    private bool isTriggered = false;
+
+    // Use this for initialization
+    void Start () {
         displayString = "";
         beginningString = "It is over for us.\nThis is " + NameGenerator.getNewName() + "'s final transmission...";
         txtMesh.text = displayString;
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        if (!isTypeable)
+    // Update is called once per frame
+    void Update()
+    {
+        if (isTriggered)
         {
-            keyTimer += Time.deltaTime;
-            if (keyTimer > keyThreshold)
+            if (!isTypeable)
             {
-                keyTimer -= keyThreshold;
-
-                displayString += beginningString[stringIter];
-                stringIter++;
-                if (stringIter >= beginningString.Length)
+                //keyTimer += Time.deltaTime;
+                keyTimer += Time.unscaledDeltaTime;
+                if (keyTimer > keyThreshold)
                 {
-                    displayString += "\n";
-                    isTypeable = true;
+                    keyTimer -= keyThreshold;
+
+                    displayString += beginningString[stringIter];
+                    stringIter++;
+                    if (stringIter >= beginningString.Length)
+                    {
+                        displayString += "\n";
+                        isTypeable = true;
+                    }
+                    //txtMesh.text = displayString;
                 }
-                //txtMesh.text = displayString;
             }
-        }
-        else
-        {
-            typingTimer += Time.deltaTime;
-
-
-            if (Input.inputString != "")
+            else
             {
+                typingTimer += Time.unscaledDeltaTime;
+                //typingTimer += Time.deltaTime;
 
-
-                currAddString = "";
-                if (Random.Range(0f, 1f) < probabilityCurve.Evaluate(typingTimer / typingThreshold))
+                if (Input.inputString != "")
                 {
-                    currAddString += messupString[Random.Range(0, messupString.Length)];
-                    //displayString += messupString[Random.Range(0, messupString.Length)];
-                    //typeCount += 1;
+                    
+                    currAddString = "";
+                    if (Random.Range(0f, 1f) < probabilityCurve.Evaluate(typingTimer / typingThreshold))
+                    {
+                        currAddString += messupString[Random.Range(0, messupString.Length)];
+                        //displayString += messupString[Random.Range(0, messupString.Length)];
+                        //typeCount += 1;
+                    }
+                    else
+                    {
+                        currAddString = Input.inputString;
+                        //displayString += Input.inputString;
+                        //typeCount += Input.inputString.Length;
+                    }
+
+                    displayString += currAddString;
+                    typeCount += currAddString.Length;
+
+                    if (typeCount > typeOverflowAbsThreshold)
+                    {
+                        displayString += "\n";
+                        typeCount = 0;
+                    }
+                    else if (typeCount > typeOverflowThreshold && currAddString.Contains(" "))
+                    {
+                        displayString += "\n";
+                        typeCount = 0;
+                    }
+
+                    //Debug.Log("Input string is not empty!");
                 }
                 else
                 {
-                    currAddString = Input.inputString;
-                    //displayString += Input.inputString;
-                    //typeCount += Input.inputString.Length;
+                    //Debug.Log("Input string is empty");
                 }
-
-                displayString += currAddString;
-                typeCount += currAddString.Length;
-
-                if (typeCount > typeOverflowAbsThreshold)
-                {
-                    displayString += "\n";
-                    typeCount = 0;
-                } else if (typeCount > typeOverflowThreshold && currAddString.Contains(" "))
-                {
-                    displayString += "\n";
-                    typeCount = 0;
-                }
-
-                //Debug.Log("Input string is not empty!");
-            } else
-            {
-                //Debug.Log("Input string is empty");
             }
-        }
 
-        if (displayString.GetHashCode() != txtMesh.text.GetHashCode())
+            if (displayString.GetHashCode() != txtMesh.text.GetHashCode())
+            {
+                txtMesh.text = displayString + "_";
+            }
+
+
+        }
+    }
+
+    public void triggerTransmission()
+    {
+        if (!glassLayer.gameObject.activeSelf)
         {
-            txtMesh.text = displayString + "_";
+            glassLayer.gameObject.SetActive(true);
         }
-
-
+            isTriggered = true;
     }
 }

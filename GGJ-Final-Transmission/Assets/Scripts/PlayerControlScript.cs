@@ -19,9 +19,13 @@ public class PlayerControlScript : MonoBehaviour
     public GameObject playerExplosionPrefab = null;
     public GameObject playerSprite = null;
 
+    private TestTransmissionScript transmissionScript;
+
     // Use this for initialization
     void Start()
     {
+        transmissionScript = GameObject.FindObjectOfType<TestTransmissionScript>();
+
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
 
@@ -87,6 +91,8 @@ public class PlayerControlScript : MonoBehaviour
             health = 0;
             dead = true;
 
+            transmissionScript.triggerTransmission();
+
             StartCoroutine(AnimateDeath());
         }
         if (healthSlider != null)
@@ -105,7 +111,8 @@ public class PlayerControlScript : MonoBehaviour
         GameObject.Destroy(explosion, 2.5f);
 
         // Slow time and wait for a few seconds
-        Time.timeScale = 0.25f;
+        //Time.timeScale = 0.25f;
+        Time.timeScale = 0.05f;
         yield return new WaitForSeconds(0.25f);
         playerSprite.SetActive(false);
         yield return new WaitForSeconds(0.75f);
