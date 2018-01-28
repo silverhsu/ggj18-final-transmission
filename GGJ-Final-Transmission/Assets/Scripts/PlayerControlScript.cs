@@ -51,7 +51,7 @@ public class PlayerControlScript : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 velocity = rb.velocity;
-        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.05f);
+        velocity = Vector3.SmoothDamp(velocity, inputVelocity, ref accel, 0.01f);
         rb.velocity = velocity;
 
         //rb.velocity = inputVelocity;
