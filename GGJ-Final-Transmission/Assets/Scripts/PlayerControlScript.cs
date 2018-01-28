@@ -73,7 +73,7 @@ public class PlayerControlScript : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         string tag = other.tag;
-        Debug.Log(tag);
+        //Debug.Log(tag);
         if (tag == "Asteroid")
         {
             TakeDamage(ASTEROID_DAMAGE);

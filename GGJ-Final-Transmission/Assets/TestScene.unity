@@ -587,7 +587,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 263781800
+  randomSeed: 1790021839
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11793,6 +11793,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   glassLayer: {fileID: 944598408}
+  liesDB: {fileID: 2054580591}
 --- !u!4 &2054580589
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class TestTransmissionScript : MonoBehaviour {
 
     private string displayString = "";
     private string beginningString = "It is over for us.\nThis is our final transmission...";
+    private string queryString = "";
 
     //"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()"
     private string messupString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()!@#$%^&*()!@#$%^&*()";
@@ -28,9 +29,13 @@ public class TestTransmissionScript : MonoBehaviour {
     public float typingTimer = 0f;
     private float typingThreshold = 12f;
 
+    private bool isDoneTyping = false;
+
     public AnimationCurve probabilityCurve;
 
     public SpriteRenderer glassLayer;
+
+    public LiesDatabase liesDB;
 
     private bool isTriggered = false;
 
@@ -56,10 +61,13 @@ public class TestTransmissionScript : MonoBehaviour {
                     keyTimer -= keyThreshold;
 
                     displayString += beginningString[stringIter];
+                    //queryString += beginningString[stringIter];
+
                     stringIter++;
                     if (stringIter >= beginningString.Length)
                     {
                         displayString += "\n";
+                        //queryString += "\n";
                         isTypeable = true;
                     }
                     //txtMesh.text = displayString;
@@ -88,19 +96,24 @@ public class TestTransmissionScript : MonoBehaviour {
                     }
 
                     displayString += currAddString;
+                    queryString += currAddString;
+
                     typeCount += currAddString.Length;
 
                     if (typeCount > typeOverflowAbsThreshold)
                     {
                         displayString += "\n";
+                        queryString += "\n";
                         typeCount = 0;
                     }
                     else if (typeCount > typeOverflowThreshold && currAddString.Contains(" "))
                     {
                         displayString += "\n";
+                        queryString += "\n";
                         typeCount = 0;
                     }
 
+                   
                     //Debug.Log("Input string is not empty!");
                 }
                 else
@@ -114,6 +127,16 @@ public class TestTransmissionScript : MonoBehaviour {
                 txtMesh.text = displayString + "_";
             }
 
+
+            if (!isDoneTyping && typingTimer > typingThreshold)
+            {
+                isDoneTyping = true;
+
+                liesDB.InsertMessage(queryString);
+
+                //SUBMIT
+                Debug.Log(queryString);
+            }
 
         }
     }

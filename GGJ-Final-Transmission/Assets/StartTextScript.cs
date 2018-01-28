@@ -20,4 +20,9 @@ public class StartTextScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void pullMessage()
+    {
+        isTriggered = true;
+    }
 }
