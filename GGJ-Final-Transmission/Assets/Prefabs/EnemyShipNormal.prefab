@@ -124,7 +124,7 @@ MonoBehaviour:
   health: 1
   dead: 0
   healthSlider: {fileID: 0}
-  explosionPrefab: {fileID: 1324021458447354, guid: bfb46f631f1bc164bbd2488efc0e995d,
+  explosionPrefab: {fileID: 1331228843405028, guid: 0d9fc7536da6a6742aaf0c8456fdc645,
     type: 2}
   bulletPrefab: {fileID: 1226158629181966, guid: 6bd3f4f7bb724194786310d66f375fde,
     type: 2}
