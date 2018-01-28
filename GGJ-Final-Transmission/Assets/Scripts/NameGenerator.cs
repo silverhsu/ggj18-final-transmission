@@ -215,7 +215,7 @@ public static class NameGenerator
         char lastNameLastChar = lastName[lastName.Length - 1];
 
         // Weird-ass Russian thing
-        if (lastNameLastChar.Equals('v') && lastNameIndex % 8 >= 4)
+        if (lastNameLastChar.Equals('v') && lastNameInd % 8 >= 4)
         {
             lastName += 'a';
         }
